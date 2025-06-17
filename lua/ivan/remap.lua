@@ -24,7 +24,7 @@ vim.keymap.set("n", "=ap", "ma=ap'a")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({"n", "x"}, "<leader>P", [["+p]])
+vim.keymap.set({ "n", "x" }, "<leader>P", [["+p]])
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -48,14 +48,12 @@ vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
-
 vim.keymap.set("n", "L", ":bnext<CR>")
 vim.keymap.set("n", "H", ":bprevious<CR>")
 vim.keymap.set("n", "<leader>bn", ":enew<CR>")
 vim.keymap.set("n", "<leader>bq", ":bd<CR>")
 
 vim.keymap.set("n", "<C-/>", ":ToggleTerm<CR>")
-
 
 vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
@@ -66,4 +64,3 @@ vim.keymap.set("n", "<leader>ea", 'oassert.NoError(err, "")<Esc>F";a')
 vim.keymap.set("n", "<leader>ef", 'oif err != nil {<CR>}<Esc>Olog.Fatalf("error: %s\\n", err.Error())<Esc>jj')
 
 vim.keymap.set("n", "<leader>el", 'oif err != nil {<CR>}<Esc>O.logger.Error("error", "error", err)<Esc>F.;i')
-
