@@ -24,7 +24,7 @@ vim.keymap.set("n", "=ap", "ma=ap'a")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("x", "<leader>P", [["+p]])
+vim.keymap.set({"n", "x"}, "<leader>P", [["+p]])
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
