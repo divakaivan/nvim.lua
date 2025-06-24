@@ -50,7 +50,7 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase w
 vim.keymap.set("n", "L", ":bnext<CR>", { desc = "Go to next buffer" })
 vim.keymap.set("n", "H", ":bprevious<CR>", { desc = "Go to previous buffer" })
 vim.keymap.set("n", "<leader>bn", ":enew<CR>", { desc = "New buffer" })
-vim.keymap.set("n", "<leader>bq", ":bd<CR>", { desc = "Close current buffer" })
+vim.keymap.set("n", "<leader>bq", ":bd!<CR>", { desc = "Close current buffer" })
 
 vim.keymap.set("n", "<C-/>", ":ToggleTerm<CR>", { desc = "Toggle terminal" })
 
