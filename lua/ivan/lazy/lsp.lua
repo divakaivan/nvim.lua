@@ -16,7 +16,10 @@ return {
 
 	config = function()
 		require("conform").setup({
-			formatters_by_ft = {},
+			formatters_by_ft = {
+				python = { "ruff" },
+				go = { "gofumpt" },
+			},
 		})
 		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
@@ -92,7 +95,7 @@ return {
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				['<C-y>'] = cmp.mapping.confirm({ select = true }),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
 				{ name = "copilot", group_index = 2 },
