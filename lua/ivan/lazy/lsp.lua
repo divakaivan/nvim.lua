@@ -1,3 +1,6 @@
+local root_files = {
+	".clang-format",
+}
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -19,6 +22,7 @@ return {
 			formatters_by_ft = {
 				python = { "ruff" },
 				go = { "gofumpt" },
+				c = { "clang-format" },
 			},
 		})
 		local cmp = require("cmp")
