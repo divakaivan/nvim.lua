@@ -109,6 +109,13 @@ return {
 				{ name = "buffer" },
 			}),
 		})
+		vim.keymap.set({ "i", "s" }, "<Tab>", function()
+			if require("luasnip").jumpable(1) then
+				require("luasnip").jump(1)
+			else
+				return "<Tab>"
+			end
+		end, { expr = true, silent = true })
 
 		vim.diagnostic.config({
 			-- update_in_insert = true,
