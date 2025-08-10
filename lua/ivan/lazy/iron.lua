@@ -18,8 +18,15 @@ return {
 					},
 					python = {
 						command = { "ipython", "--no-autoindent" },
-						format = common.bracketed_paste, -- add _python maybe?
+						-- format = common.bracketed_paste, -- add _python maybe?
 						block_dividers = { "# ;;", "#;;" },
+						format = function(lines, extras)
+							result = require("iron.fts.common").bracketed_paste_python(lines, extras)
+							filtered = vim.tbl_filter(function(line)
+								return not string.match(line, "^%s*#")
+							end, result)
+							return filtered
+						end,
 					},
 				},
 				repl_filetype = function(bufnr, ft)
