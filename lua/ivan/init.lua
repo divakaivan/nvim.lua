@@ -107,3 +107,21 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	pattern = { "*.py", "*.yaml", "*.yml" },
 	command = "silent! loadview",
 })
+
+vim.api.nvim_create_user_command("FoldDocstrings", function()
+	local current_line = vim.fn.line(".")
+	local current_col = vim.fn.col(".")
+	vim.cmd("normal! gg")
+	while vim.fn.search("\"\"\"\\|'''", "W") ~= 0 do
+		local start_line = vim.fn.line(".")
+		if vim.fn.search("\"\"\"\\|'''", "W") ~= 0 then
+			local end_line = vim.fn.line(".")
+			vim.cmd(start_line .. "," .. end_line .. "fold")
+		end
+	end
+	vim.fn.cursor(current_line, current_col)
+end, {})
+
+vim.keymap.set("n", "zp", ":FoldDocstrings<CR>", {
+	desc = "Fold current docstring",
+})
