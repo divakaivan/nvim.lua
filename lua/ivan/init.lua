@@ -122,6 +122,4 @@ vim.api.nvim_create_user_command("FoldDocstrings", function()
 	vim.fn.cursor(current_line, current_col)
 end, {})
 
-vim.keymap.set("n", "zp", ":FoldDocstrings<CR>", {
-	desc = "Fold current docstring",
-})
+vim.keymap.set("n", "zp", ":FoldDocstrings<CR>", {})
