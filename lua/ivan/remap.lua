@@ -4,8 +4,6 @@ vim.keymap.set("n", "<leader><leader>", vim.cmd.Ex, { desc = "Open Ex mode" })
 vim.keymap.set("v", "K", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 vim.keymap.set("v", "J", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 
-vim.api.nvim_set_keymap("n", "<leader>tf", "<Plug>PlenaryTestFile", { noremap = false, silent = false })
-
 vim.keymap.set("n", "j", "k", { noremap = true })
 vim.keymap.set("n", "k", "j", { noremap = true })
 vim.keymap.set("v", "j", "k", { noremap = true })

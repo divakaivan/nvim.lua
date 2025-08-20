@@ -42,6 +42,7 @@ return {
 				"rust_analyzer",
 				"gopls",
 				"ruff",
+                "jedi_language_server",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -49,7 +50,6 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-
 				zls = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.zls.setup({
@@ -92,7 +92,9 @@ return {
 		cmp.setup({
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+                    -- require("luasnip").lsp_expand(args.body)
+                    local plain_text = args.body:match("^([^(]+)")
+                    vim.api.nvim_put({plain_text}, 'c', true, true)
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
@@ -102,25 +104,26 @@ return {
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "copilot", group_index = 2 },
+				-- { name = "copilot", group_index = 2 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
 			}, {
 				{ name = "buffer" },
 			}),
 		})
-		vim.keymap.set({ "i", "s" }, "<Tab>", function()
-			if require("luasnip").jumpable(1) then
-				require("luasnip").jump(1)
-			else
-				return "<Tab>"
-			end
-		end, { expr = true, silent = true })
+        -- uncomment if using snippets
+		-- vim.keymap.set({ "i", "s" }, "<Tab>", function()
+		-- 	if require("luasnip").jumpable(1) then
+		-- 		require("luasnip").jump(1)
+		-- 	else
+		-- 		return "<Tab>"
+		-- 	end
+		-- end, { expr = true, silent = true })
 
 		vim.diagnostic.config({
 			-- update_in_insert = true,
 			float = {
-				focusable = false,
+				focusable = true,
 				style = "minimal",
 				border = "rounded",
 				source = "always",
